@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+require 'yaml'
+settings = YAML.load_file 'vagrantConfig.yml'
+
+Vagrant.configure(2) do |config|
+  config.vm.define "frontend" do |frontend|
+    frontend.ssh.username = 'vagrant'
+    frontend.vm.box = "ubuntu/trusty64"
+    frontend.vm.network "public_network", ip: settings['frontend']['ip'], bridge: settings['bridge']
+  end
+  
+  config.vm.provision :ansible do |ansible|
+    ansible.verbose = "vvvv"
+    ansible.playbook = "site.yml"
+    ansible.host_key_checking = false
+    ansible.inventory_path = "ansible_static_inventory"
+    config.ssh.forward_agent = true
+  end
+end
