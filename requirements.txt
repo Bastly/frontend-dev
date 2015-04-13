@@ -1,1 +1,2 @@
 bastly.git-publisher
+bastly.nodejs
