@@ -6,7 +6,7 @@
 
   roles: 
     - { role : bastly.nodejs, sudo: yes }
-    - { role : bastly.git-publisher, repo_to_install: "https://bitbucket.org/bastly/frontendv1", app_installation_dir : "/vagrant/frontend"}
+    - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/frontendv1.git", app_installation_dir : "/vagrant/frontend"}
 
   tasks:
     - name: importing vars
