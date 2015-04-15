@@ -9,6 +9,10 @@ Vagrant.configure(2) do |config|
     frontend.ssh.username = 'vagrant'
     frontend.vm.box = "ubuntu/trusty64"
     frontend.vm.network "public_network", ip: settings['frontend']['ip'], bridge: settings['bridge']
+    frontend.vm.provider "virtualbox" do |v|
+      v.memory = 1024
+      v.cpus = 2
+    end
   end
   
   config.vm.provision :ansible do |ansible|
