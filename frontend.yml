@@ -33,10 +33,6 @@
       sudo: true
       shell: npm install -g gulp 
 
-    - name: install browser-sync 
-      sudo: true
-      shell: npm install -g browser-sync 
-
     - name: install karma-cli
       sudo: true
       shell: npm install -g karma-cli
