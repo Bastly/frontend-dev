@@ -1,1 +1,8 @@
+.DS_Store
+.sass-cache
+build
+Desktop.ini
+node_modules
+.awspublish-www.bastly.com
 *
+
