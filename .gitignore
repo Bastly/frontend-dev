@@ -1,2 +1,3 @@
 vagrantConfig.yml
 .vagrant
+ansible_static_inventory
