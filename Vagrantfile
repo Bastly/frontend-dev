@@ -4,6 +4,8 @@ require 'yaml'
 settings = YAML.load_file 'vagrantConfig.yml'
 
 Vagrant.configure(2) do |config|
+  config.vm.synced_folder ".", "/vagrant", type: "rsync",
+    rsync__exclude: [".git/", 'node_modules/']
   config.vm.define "frontend" do |frontend|
     frontend.vm.synced_folder "sharedDir", "/vagrant"
     frontend.ssh.username = 'vagrant'
