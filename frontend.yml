@@ -1,14 +1,7 @@
 ---
 - hosts: frontend
-  vars:
-    nodejs_version: "0.10."
-    nodejs_install_method : "package"
 
-  roles: 
-    - { role : bastly.nodejs, sudo: yes }
-    - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/frontendv1.git", app_installation_dir : "/vagrant/frontend"}
-
-  tasks:
+  pre_tasks:
     - name: importing vars
       include_vars: vagrantConfig.yml
 
@@ -45,3 +38,8 @@
 
     - name: copy .npmrc to ~/
       command: cp ~/secret-keys/s3PublisherCredentials ~/.aws/credentials
+
+
+  roles: 
+    - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/frontendv1.git", app_installation_dir : "/vagrant/frontend"}
+
