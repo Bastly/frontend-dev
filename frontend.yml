@@ -30,6 +30,10 @@
       sudo: true
       shell: npm install -g karma-cli
     
+    - name: install bower
+      sudo: true
+      shell: npm install -g bower
+    
     - name: clone secret keys if not already cloned
       git: repo=git@bitbucket.org:bastly/secret-keys.git dest=~/secret-keys accept_hostkey=True version=master
     
@@ -39,7 +43,16 @@
     - name: copy .npmrc to ~/
       command: cp ~/secret-keys/s3PublisherCredentials ~/.aws/credentials
 
+    - name: install scss-lint 
+      sudo: true
+      shell: gem install scss-lint
+
+    - name: install scss-lint 
+      sudo: true
+      shell: gem install sass
+
 
   roles: 
     - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/frontendv1.git", app_installation_dir : "/vagrant/frontend"}
+    - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/user-panel.git", app_installation_dir : "/vagrant/user-panel"}
 
